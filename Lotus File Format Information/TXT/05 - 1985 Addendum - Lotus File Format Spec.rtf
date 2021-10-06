@@ -1,0 +1,155 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf500
+{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs26 \cf0 \expnd0\expndtw0\kerning0
+ADDENDUM to WORKSHEET FILE FORMAT Document (2-19-85):\
+\
+\
+The following supplements the discussion of the FORMULA record\
+type in the Worksheet File Format document.\
+__________________________________________________________________________\
+\
+\
+    Formula Record Type\
+\
+		  byte 0 = format\
+                  byte 1 & 2 = column \
+                  byte 3 & 4 = row\
+                  byte 5-12 = formula numeric value (IEEE long real)\
+                  byte 13 & 14 = formula size (bytes)\
+                  byte 15 & above = formula code, compiled Reverse-Polish\
+                                    Internal Notation; max of 2048 bytes \
+\
+        Opcode     Explanation\
+        ------     ------------\
+\
+        0          push constant...followed by 8 byte #\
+        1          push variable...followed by 4 byte column,row...a\
+                      relative coordinate has its most significant bit set\
+        2          push range...followed by 8 byte begin/end column,row\
+        3          end of formula\
+        4          parentheses\
+        5          integer constant...followed by 2 byte integer\
+        6          push string...followed by null terminated string\
+        7          unused\
+        8          unary -\
+        9          binary +\
+       10          binary -\
+\
+       11          *\
+       12          /\
+       13          ^\
+       14          =\
+       15          <>\
+       16          <=\
+       17          >=\
+       18          <\
+       19          >\
+       20          #AND#\
+\
+       21          #OR#\
+       22          #NOT#\
+       23          unary +\
+       24          &\
+       25..30      unused\
+\
+       31          @na\
+       32          @err\
+       33          @abs\
+       34          @int\
+       35          @sqrt\
+       36          @log\
+       37          @ln\
+       38          @pi\
+       39          @sin\
+       40          @cos\
+\
+       41          @tan\
+       42          @atan2\
+       43          @atan\
+       44          @asin\
+       45          @acos\
+       46          @exp\
+       47          @mod\
+       48          @sel\
+       49          @isna\
+       50          @iserr\
+\
+       51          @false\
+       52          @true\
+       53          @rand\
+       54          @date\
+       55          @now\
+       56          @pmt\
+       57          @pv\
+       58          @fv\
+       59          @if\
+       60          @day\
+\
+       61          @month\
+       62          @year\
+       63          @round\
+       64          @time\
+       65          @hour\
+       66          @minute\
+       67          @second\
+       68          @isnumber\
+       69          @isstring\
+       70          @length\
+\
+       71          @value\
+       72          @fixed\
+       73          @mid\
+       74          @chr\
+       75          @ascii\
+       76          @find\
+       77          @datevalue\
+       78          @timevalue\
+       79          @cell pointer\
+       80          @sum..followed by 1 byte >>> # of args\
+\
+       81          @avg..same as above\
+       82          @cnt.. "    "   "\
+       83          @min.. "    "   "\
+       84          @max.. "    "   "\
+       85          @vlookup\
+       86          @npv\
+       87          @var\
+       88          @std\
+       89          @irr\
+       90          @hlookup\
+\
+       91          @dsum\
+       92          @davg\
+       93          @dcnt\
+       94          @dmin\
+       95          @dmax\
+       96          @dvar\
+       97          @dstd\
+       98          @index\
+       99          @cols\
+      100          @rows\
+\
+      101          @repeat\
+      102          @upper\
+      103          @lower\
+      104          @left\
+      105          @right\
+      106          @replace\
+      107          @proper\
+      108          @cell\
+      109          @trim\
+      110          @clean\
+\
+      111          @s\
+      112          @v\
+      113          @streq\
+      114          @call\
+      115          @indirect\
+\
+}
