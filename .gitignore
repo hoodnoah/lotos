@@ -1,11 +1,8 @@
 # Files
-*.123
-*.bak
-*.BAK
 
 
 # Directories
-Samples
+Samples/Private
 
 # gitignore.io
 # Created by https://www.toptal.com/developers/gitignore/api/fsharp
