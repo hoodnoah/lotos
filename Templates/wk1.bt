@@ -1,0 +1,62 @@
+//------------------------------------------------
+//--- 010 Editor v12.0 Binary Template
+//
+//      File: WK1
+//   Authors: Noah Hood
+//   Version: 0.0.1
+//   Purpose: Outline a WK1 file for insight about later file formats
+//  Category: 
+// File Mask: 
+//  ID Bytes: 
+//   History: 
+//------------------------------------------------
+typedef struct OPCode {
+    uint16 code;
+};
+
+typedef struct RecordLength {
+    uint16 recLength;   
+};
+
+typedef struct RecordHeader { 
+    OPCode opcode;
+    RecordLength recLength;
+};
+
+typedef struct BOF {
+    RecordHeader header;
+    uint16 fFmtRevNo; // File format revision number; 05 04 -> 1029 -> Symphony | 04 04 -> 1028 -> 1-2-3 File | 04 06 -> 1030 -> ???
+};
+
+typedef struct Range {
+    RecordHeader header;
+    uint16 startColumn;
+    uint16 startRow;
+    uint16 endColumn;
+    uint16 endRow;
+};
+
+typedef struct CalcCount {
+    RecordHeader header;
+    ubyte iterCount;
+};
+
+typedef struct CalcMode {
+    RecordHeader header;
+    ubyte calcMode; // 0 = manual mode; FF = automatic
+};
+
+typedef struct CalcOrder {
+    RecordHeader header;
+    ubyte calcOrder; // 0 = natural; 1 = by column; FF = by row
+};
+
+typedef struct WK1File {
+    BOF bof;    
+    Range activeRange;
+    CalcCount calcCount;
+    CalcMode calcMode;
+    CalcOrder calcOrder;
+};
+
+WK1File wk1;
