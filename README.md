@@ -4,7 +4,9 @@
 
 Worksheet files are unbroken sequences of variable length, known as Records.
 
-Each record is a 4-byte header, followed by the record body; the header defines the record *type* and *length*.
+Each record is a 4-byte header, followed by the record body; the header defines the record _type_ and _length_.
+
+The records are little-endian, e.g. '02 00'` is '2'.
 
 | Byte Number(s) | Byte Description            |
 | -------------- | --------------------------- |
@@ -13,6 +15,6 @@ Each record is a 4-byte header, followed by the record body; the header defines 
 
 For Example:
 
-Given the record header ```````1C 00 20 00`
+Given the record header ```````1C 00 20 00
 
-The first two bytes 
+The first two bytes
