@@ -3,9 +3,12 @@ meta:
   endian: le
   imports:
     - enums
+    - bodytypes
 
 seq:
-  - id: record
+  - id: record_opcode
+    type: u2
+  - id: record_length
     type: record
     repeat: eos
 
@@ -17,10 +20,6 @@ types:
         enum: 'enum::record_type'
       - id: record_length
         type: u2
-  record_body:
-    seq:
-      - id: body
-        size-eos: true
   record:
     seq:
       - id: header
