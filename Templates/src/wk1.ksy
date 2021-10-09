@@ -3,7 +3,6 @@ meta:
   endian: le
   imports:
     - enums
-    - bodytypes
 
 seq:
   - id: record_opcode
