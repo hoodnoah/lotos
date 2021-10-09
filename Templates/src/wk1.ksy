@@ -2,10 +2,9 @@ meta:
   id: wk1
   endian: le
   imports:
-    - type
+    - recordtypes
 
 seq:
   - id: record
-    type: 'types::record'
+    type: 'recordtypes::record'
     repeat: eos
-

@@ -1,5 +1,5 @@
 meta:
-  id: enum
+  id: opcodetypes
 
 enums:
   record_type:
