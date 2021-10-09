@@ -1,0 +1,1 @@
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (17,2)-(17,75): Warning FS0020: The result of this expression has type 'int' and is implicitly ignored. Consider using 'ignore' to discard this value explicitly, e.g. 'expr |> ignore', or 'let' to bind the result to a name, e.g. 'let result = expr'.

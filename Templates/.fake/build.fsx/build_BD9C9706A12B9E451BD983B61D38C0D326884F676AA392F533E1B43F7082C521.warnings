@@ -1,0 +1,14 @@
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (22,7)-(22,24): Error FS0039: The value, namespace, type or module 'EnvironmentHelper' is not defined. Maybe you want one of the following:
+   Environment
+   EnvironmentVariableTarget
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (27,4)-(27,15): Error FS0039: The value or constructor 'execProcess' is not defined. Maybe you want one of the following:
+   ExecParams
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (34,2)-(34,16): Warning FS0044: This construct is deprecated. Please use cleanDir instead
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (38,2)-(38,52): Error FS0001: This expression was expected to have type
+    'unit'    
+but here has type
+    'string -> unit'    
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (38,2)-(38,52): Error FS0001: This expression was expected to have type
+    'unit'    
+but here has type
+    'string -> unit'    

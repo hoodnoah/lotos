@@ -1,0 +1,11 @@
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (23,4)-(23,15): Error FS0039: The value or constructor 'execProcess' is not defined. Maybe you want one of the following:
+   ExecParams
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (30,2)-(30,16): Warning FS0044: This construct is deprecated. Please use cleanDir instead
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (34,2)-(34,52): Error FS0001: This expression was expected to have type
+    'unit'    
+but here has type
+    'string -> unit'    
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (34,2)-(34,52): Error FS0001: This expression was expected to have type
+    'unit'    
+but here has type
+    'string -> unit'    

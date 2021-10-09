@@ -1,0 +1,6 @@
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (13,2)-(13,16): Warning FS0044: This construct is deprecated. Please use cleanDir instead
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (13,17)-(13,32): Error FS0039: The value or constructor 'outputDirectory' is not defined.
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (17,2)-(17,74): Error FS0001: This expression was expected to have type
+    'unit'    
+but here has type
+    'int'    

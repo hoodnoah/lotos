@@ -1,0 +1,6 @@
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (18,40)-(18,42): Error FS0001: This expression was expected to have type
+    'string'    
+but here has type
+    'unit'    
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (19,6)-(19,10): Error FS0039: The pattern discriminator 'some' is not defined.
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (18,10)-(18,42): Warning FS0025: Incomplete pattern matches on this expression.

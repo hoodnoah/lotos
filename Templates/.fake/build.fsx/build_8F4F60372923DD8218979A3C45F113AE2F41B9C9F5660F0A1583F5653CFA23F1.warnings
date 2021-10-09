@@ -1,0 +1,4 @@
+C:\Users\hoodn\Documents\Programming\lotos\Templates\build.fsx (18,40)-(18,42): Error FS0001: This expression was expected to have type
+    'string'    
+but here has type
+    'unit'    
