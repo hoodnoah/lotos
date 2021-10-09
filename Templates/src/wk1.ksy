@@ -2,12 +2,10 @@ meta:
   id: wk1
   endian: le
   imports:
-    - enums
+    - enum
 
 seq:
-  - id: record_opcode
-    type: u2
-  - id: record_length
+  - id: record
     type: record
     repeat: eos
 
@@ -19,9 +17,23 @@ types:
         enum: 'enum::record_type'
       - id: record_length
         type: u2
+        
+  generic_record:
+    seq:
+      - id: body
+        size: _parent.header.record_length
+  bof_record:
+    seq:
+      - id: revision_code
+        type: u2
   record:
     seq:
-      - id: header
-        type: record_header
-      - id: body
-        size: header.record_length
+    - id: header
+      type: record_header
+    - id: body
+      type:
+        switch-on: header.record_type
+        cases:
+          'enum::record_type::bof': bof_record
+          _: generic_record
+
