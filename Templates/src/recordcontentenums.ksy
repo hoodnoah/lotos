@@ -15,3 +15,11 @@ enums:
     0x01: 'by_column'
     0xFF: 'by_row'
 
+  split_window_type:
+    0x00: 'not_split'
+    0x01: 'vertical_split'
+    0xFF: 'horizontal_split'
+  
+  split_window_sync:
+    0x00: 'not_synchronized'
+    0xFF: 'synchronized'
