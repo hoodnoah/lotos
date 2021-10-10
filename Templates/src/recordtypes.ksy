@@ -33,6 +33,9 @@ types:
           'opcodetypes::record_type::wintwo': wintwo
           'opcodetypes::record_type::colw2': colw2
           'opcodetypes::record_type::name': name
+          'opcodetypes::record_type::blank': blank
+          'opcodetypes::record_type::integer': integer
+          'opcodetypes::record_type::number': number
           _: generic
       size: header.record_length
           
@@ -41,6 +44,19 @@ types:
       - id: generic_body
         size: _parent.header.record_length
   
+  rangereference:
+    seq: 
+      - id: starting_colrow
+        type: colrowreference
+      - id: ending_colrow
+        type: colrowreference
+
+  colrowreference:
+    seq:
+      - id: column
+        type: u2
+      - id: row
+        type: u2
 
   bof:
     seq:
@@ -100,21 +116,17 @@ types:
 
   range:
     seq:
-      - id: starting_column
-        type: u2
-      - id: starting_row
-        type: u2
-      - id: ending_column
-        type: u2
-      - id: ending_row
-        type: u2
+      - id: range_reference
+        type: rangereference
+    doc: |
+      The range of cells written to the worksheet.
+      If the worksheet was created using the File Save command or with a File Xtract command, this excludes trailing rows and columns.
+      If there is no data in the range, the starting column is set to -1.
 
   window1:
     seq:
-      - id: cursor_column_position
-        type: u2
-      - id: cursor_row_position
-        type: u2
+      - id: cursor_colrowreference
+        type: colrowreference
       - id: format
         type: u1
       - id: unused1
@@ -125,18 +137,14 @@ types:
         type: u2
       - id: nrow_on_screen
         type: u2
-      - id: left_column
-        type: u2
-      - id: top_row
-        type: u2
+      - id: leftcol_toprow
+        type: colrowreference
       - id: ntitle_columns
         type: u2
       - id: ntitle_rows
         type: u2
-      - id: left_title_column
-        type: u2
-      - id: top_title_row
-        type: u2
+      - id: left_title_colrowreference
+        type: colrowreference
       - id: border_width_column
         type: u2
       - id: border_width_row
@@ -154,41 +162,35 @@ types:
         type: u1
 
   wintwo:
-      seq:
-        - id: cursor_column_position
-          type: u2
-        - id: cursor_row_position
-          type: u2
-        - id: format
-          type: u1
-        - id: unused1
-          type: u1
-        - id: column_width
-          type: u2
-        - id: ncol_on_screen
-          type: u2
-        - id: nrow_on_screen
-          type: u2
-        - id: left_column
-          type: u2
-        - id: top_row
-          type: u2
-        - id: ntitle_columns
-          type: u2
-        - id: ntitle_rows
-          type: u2
-        - id: left_title_column
-          type: u2
-        - id: top_title_row
-          type: u2
-        - id: border_width_column
-          type: u2
-        - id: border_width_row
-          type: u2
-        - id: window_width
-          type: u2
-        - id: unused2
-          type: u1
+    seq:
+      - id: cursor_colrowreference
+        type: colrowreference
+      - id: format
+        type: u1
+      - id: unused1
+        type: u1
+      - id: column_width
+        type: u2
+      - id: ncol_on_screen
+        type: u2
+      - id: nrow_on_screen
+        type: u2
+      - id: leftcol_toprow
+        type: colrowreference
+      - id: ntitle_columns
+        type: u2
+      - id: ntitle_rows
+        type: u2
+      - id: left_title_colrowreference
+        type: colrowreference
+      - id: border_width_column
+        type: u2
+      - id: border_width_row
+        type: u2
+      - id: window_width
+        type: u2
+      - id: unused2
+        type: u1
 
   colw2:
     seq:
@@ -203,14 +205,10 @@ types:
         type: str
         size: 15
         encoding: ASCII
-      - id: starting_column
-        type: u2
-      - id: starting_row
-        type: u2
-      - id: ending_column
-        type: u2
-      - id: ending_row
-        type: u2
+      - id: starting_colrowreference
+        type: colrowreference
+      - id: ending_colrowreference
+        type: colrowreference
     doc: Used only in Lotus 1-2-3, not symphony
 
   blank:
@@ -225,3 +223,23 @@ types:
       Blank cell.
       Only for cells which are protected or do not have the default format. 
       Unprotected blank cells with the default format are omitted from the worksheet file.
+
+  integer:
+    seq:
+      - id: format
+        type: u1
+      - id: colrowreference
+        type: colrowreference
+      - id: integer_value
+        type: u2
+
+  number:
+    seq:
+      - id: format
+        type: u1
+      - id: colrowreference
+        type: colrowreference
+      - id: floatcontents
+        type: f8
+        doc: |
+          IEEE Long real; 8087 double-precision floating-point format
