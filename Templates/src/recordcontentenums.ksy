@@ -23,3 +23,11 @@ enums:
   split_window_sync:
     0x00: 'not_synchronized'
     0xFF: 'synchronized'
+
+  formula_opcode:
+    0x00: 'constant'
+    0x01: 'variable'
+    0x02: 'range'
+    0x03: 'return'
+    0x04: 'parenthesis'
+    0x05: 'signed_int_constant'

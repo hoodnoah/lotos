@@ -36,6 +36,7 @@ types:
           'opcodetypes::record_type::blank': blank
           'opcodetypes::record_type::integer': integer
           'opcodetypes::record_type::number': number
+          'opcodetypes::record_type::label': label
           _: generic
       size: header.record_length
           
@@ -243,3 +244,33 @@ types:
         type: f8
         doc: |
           IEEE Long real; 8087 double-precision floating-point format
+
+  label:
+    seq:
+      - id: format
+        type: u1
+      - id: colrowreference
+        type: colrowreference
+      - id: labelstringprefix
+        type: str
+        encoding: ASCII
+        size: 1
+      - id: labelstring
+        type: str
+        encoding: ASCII
+        terminator: 0x00
+
+  formula:
+    seq:
+      - id: format
+        type: u1
+      - id: colrowreference
+        type: colrowreference
+      - id: formulanumericvalue
+        type: f8
+      - id: formulasize
+        type: u2
+      - id: formulacontents
+        type: str
+        size: formulasize
+        terminator: 0x03
